@@ -213,7 +213,7 @@ class DeleteCommand(APICommand):
             if args.debug:
                 self.error(traceback.print_exc())
             self.exit(1, e)
-s
+
 
 def main():
     script = Script()
