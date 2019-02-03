@@ -24,7 +24,7 @@ class CreateResponse:
             res = requests.post(url, data, headers=self.headers)
             self.__status_code__ = res.status_code
             content = str(res.content, 'utf-8')
-            if self.__status_code__ == status.HTTP_201_CREATED:
+            if self.__status_code__ in (status.HTTP_200_OK, status.HTTP_201_CREATED):
                 print(content)
             else:
                 raise APIResponseError('request returns code {}: {}'.format(

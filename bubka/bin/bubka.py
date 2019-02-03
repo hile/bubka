@@ -7,12 +7,12 @@ from bubka.api.exceptions import APIResponseError
 from systematic.shell import Script, ScriptCommand
 
 
-LIST_COMMAND_DESCRIPTION = """
-List records from REST API
+GET_COMMAND_DESCRIPTION = """
+Get data from REST API
 """
 
-LIST_COMMAND_EPILOG = """
-List command returns a list of records from REST API
+GET_COMMAND_EPILOG = """
+Get command returns a list of records or single record from REST API.
 """
 
 CREATE_COMMAND_DESCRIPTION = """
@@ -69,14 +69,14 @@ class APICommand(ScriptCommand):
         return data
 
 
-class ListCommand(APICommand):
+class GetCommand(APICommand):
     """
-    List records from REST API
+    Get records from REST API
     """
-    name = 'list'
-    short_description = 'List records from REST API'
-    description = LIST_COMMAND_DESCRIPTION
-    epilog = LIST_COMMAND_EPILOG
+    name = 'get'
+    short_description = 'Get records from REST API'
+    description = GET_COMMAND_DESCRIPTION
+    epilog = GET_COMMAND_EPILOG
 
     def __register_arguments__(self, parser):
         """
@@ -218,7 +218,7 @@ class DeleteCommand(APICommand):
 def main():
     script = Script()
 
-    script.add_subcommand(ListCommand())
+    script.add_subcommand(GetCommand())
     script.add_subcommand(CreateCommand())
     script.add_subcommand(DeleteCommand())
     script.add_subcommand(UpdateCommand())
