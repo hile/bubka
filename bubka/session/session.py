@@ -13,7 +13,10 @@ from .environment import DRF_AUTH_TOKEN_VARIABLE, JWT_API_TOKEN_VARIABLE
 class APISession(object):
     """
     Base class for REST API sessions
+
+    This is also class for anonymous (not authenticated) API sessions
     """
+    session_type = 'anonymous'
 
     @property
     def headers(self):

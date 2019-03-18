@@ -10,6 +10,7 @@ class TokenAuthSession(APISession):
     """
     API Session with django rest framework token authentication
     """
+    session_type = 'token'
 
     def __init__(self, token=None, timeout=10):
         self.token = token if token is not None else os.environ.get(DRF_AUTH_TOKEN_VARIABLE, None)

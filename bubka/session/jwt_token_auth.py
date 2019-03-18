@@ -12,6 +12,7 @@ class JWTAuthenticationSession(APISession):
     """
     API Session with django rest framework token authentication
     """
+    session_type = 'jwt_token'
 
     def __init__(self, obtail_token_url, verify_token_url, refresh_token_url=None, token=None, timeout=10):
         self.token = token if token is not None else os.environ.get(JWT_API_TOKEN_VARIABLE, None)
