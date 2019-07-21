@@ -19,10 +19,10 @@ Environment variable for static DRF token
 -----------------------------------------
 
 To use the CLI with a DRF static authentication token, set environment variabble
-REST_API_STACIC_TOKEN.
+REST_API_STATIC_TOKEN.
 
 ```
-export REST_API_STACIC_TOKEN=6def9e631880d1f59b226571ceb5efc69d8dc1f1
+export REST_API_STATIC_TOKEN=6def9e631880d1f59b226571ceb5efc69d8dc1f1
 ```
 
 Using JWT authentication

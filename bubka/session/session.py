@@ -5,12 +5,13 @@ from ..api.exceptions import APIResponseError
 from ..api.create import CreateResponse
 from ..api.delete import DeleteResponse
 from ..api.response import PaginatedListResponse
+from ..api.patch import PatchResponse
 from ..api.update import UpdateResponse
 
 from .environment import DRF_AUTH_TOKEN_VARIABLE, JWT_API_TOKEN_VARIABLE
 
 
-class APISession(object):
+class APISession:
     """
     Base class for REST API sessions
 
@@ -44,6 +45,12 @@ class APISession(object):
         Dlete a record with REST API
         """
         return DeleteResponse(url, headers=self.headers, debug=debug)
+
+    def patch(self, url, data, json=False, debug=True):
+        """
+        Patch a record with REST API
+        """
+        return PatchResponse(url, data, headers=self.headers, json=json, debug=debug)
 
     def update(self, url, data, json=False, debug=True):
         """

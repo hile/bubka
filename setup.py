@@ -20,6 +20,7 @@ setup(
     install_requires=(
         'systematic>=4.8.4',
     ),
+    setup_requires=['pytest-runner'],
     tests_require=(
         'pytest',
         'pytest-runner',
