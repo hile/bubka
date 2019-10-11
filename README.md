@@ -19,11 +19,29 @@ Environment variable for static DRF token
 -----------------------------------------
 
 To use the CLI with a DRF static authentication token, set environment variabble
-REST_API_STATIC_TOKEN.
+DJANGO_REST_API_STATIC_TOKE.
 
 ```
-export REST_API_STATIC_TOKEN=6def9e631880d1f59b226571ceb5efc69d8dc1f1
+export DJANGO_REST_API_STATIC_TOKEN=6def9e631880d1f59b226571ceb5efc69d8dc1f1
 ```
+
+Environment variables for generic authorization header token
+------------------------------------------------------------
+
+To use the CLI with other authorization header tokens, set environment variable
+REST_AUTH_STATIC_TOKEN. This will send the token as-is in Authorization header.
+
+If your application requires a token name you can also set REST_AUTH_TOKEN_NAME
+which will cause the header to be sent with named token.
+
+Example:
+
+```
+REST_AUTH_TOKEN_NAME='Auth'
+REST_AUTH_STATIC_TOKEN='NotReally'
+```
+
+This sends Authorization header with value 'Auth: NotReally'.
 
 Using JWT authentication
 ------------------------

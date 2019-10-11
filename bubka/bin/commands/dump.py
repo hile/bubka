@@ -2,7 +2,6 @@
 import json
 import traceback
 
-from bubka.api.exceptions import APIResponseError
 from .base import APICommand
 
 

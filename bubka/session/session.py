@@ -8,7 +8,11 @@ from ..api.response import PaginatedListResponse
 from ..api.patch import PatchResponse
 from ..api.update import UpdateResponse
 
-from .environment import DRF_AUTH_TOKEN_VARIABLE, JWT_API_TOKEN_VARIABLE
+from .environment import (
+    DRF_AUTH_TOKEN_VARIABLE,
+    REST_AUTH_TOKEN_VARIABLE,
+    JWT_API_TOKEN_VARIABLE
+)
 
 
 class APISession:
@@ -70,8 +74,12 @@ def load_api_session():
     """
 
     if os.environ.get(DRF_AUTH_TOKEN_VARIABLE, None):
-        from .django_token_auth import TokenAuthSession
-        session = TokenAuthSession()
+        from .django_token_auth import DjangoTokenAuthSession
+        session = DjangoTokenAuthSession()
+
+    elif os.environ.get(REST_AUTH_TOKEN_VARIABLE, None):
+        from .authorization_header_auth import AuthorizationHeaderSession
+        session = AuthorizationHeaderSession()
 
     elif os.environ.get(JWT_API_TOKEN_VARIABLE, None):
         from .jwt_token_auth import JWTAuthenticationSession
